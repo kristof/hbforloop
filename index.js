@@ -1,8 +1,13 @@
 module.exports.register = function (Handlebars, options)  {
-  Handlebars.registerHelper('for', function(from, to, incr, block) {
+  Handlebars.registerHelper('for', function(from, to, step, isIncrement, block) {
       var accum = '';
-      for(var i = from; i <= to; i += incr)
-          accum += block.fn(i);
+      if(isIncrement){
+        for(var i = from; i <= to; i += step)
+            accum += block.fn(i);
+      }else{
+        for(var i = from; i <= to; i -= step)
+            accum += block.fn(i);
+      }
       return accum;
   });
 };
