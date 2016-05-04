@@ -5,7 +5,7 @@ module.exports.register = function (Handlebars, options)  {
         for(var i = from; i <= to; i += step)
             accum += block.fn(i);
       }else{
-        for(var i = from; i <= to; i -= step)
+        for(var i = from; i >= to; i -= step)
             accum += block.fn(i);
       }
       return accum;
